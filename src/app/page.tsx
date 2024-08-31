@@ -34,7 +34,7 @@ import Pomodoro from "@/components/pomodoro/Pomodoro";
 
 export default function Home() {
   return (
-    <main className="p-10 bg-[#fcfaf8] flex flex-col items-center justify-center min-h-screen">
+    <main className="bg-[#fcfaf8] flex flex-col items-center justify-center min-h-screen">
       {/* <h1 className="text-2xl leading-9 font-bold text-[#202020]">Today</h1>
       <p className="text-sm leading-4 text-[#202020]">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate
