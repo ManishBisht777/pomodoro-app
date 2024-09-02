@@ -1,18 +1,16 @@
-import { Plus } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
 import { Task } from "@/common/interfaces/task";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Separator } from "@/components/ui/separator";
+import { Plus } from "lucide-react";
+import { useState } from "react";
 
 interface AddTaskProps {
   tasks: Task[];
@@ -41,10 +39,10 @@ export default function AddTask({ setTasks, tasks }: AddTaskProps) {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <button className="text-sm flex items-center justify-center gap-1 group hover:text-[#a81f00]">
+          <button className="text-sm flex items-center justify-center gap-1 group hover:text-[#a81f00] transition ease-in-out duration-300">
             <Plus
               size={16}
-              className="text-[#a81f00] group-hover:text-white group-hover:bg-[#a81f00] rounded-full"
+              className="text-[#a81f00] group-hover:text-white group-hover:bg-[#a81f00] rounded-full transition ease-in-out duration-300"
             />
             Add task
           </button>

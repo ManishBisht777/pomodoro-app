@@ -12,8 +12,8 @@ import {
 } from "@/utils/timerUtils";
 import { PauseIcon, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../ui/button";
 import Tasks from "../tasks/Tasks";
+import { Button } from "../ui/button";
 
 interface PomodoroProps {}
 
@@ -78,30 +78,32 @@ export default function Pomodoro({}: PomodoroProps) {
   }, [pomodoroState.action]);
 
   return (
-    <div className="flex flex-col gap-6 items-center justify-center relative min-h-screen w-[35rem]">
-      <div className="flex items-center flex-col">
-        <p>{getTextByAction(pomodoroState.action)}</p>
-        <h2 className="text-9xl font-extrabold">
-          {formatTime(pomodoroState.timer)}
-        </h2>
+    <div className="flex flex-col gap-6 items-center justify-center relative h-screen w-[35rem]">
+      <div className="h-[50%] w-full flex justify-end flex-col items-center">
+        <div className="flex items-center flex-col">
+          <p>{getTextByAction(pomodoroState.action)}</p>
+          <h2 className="text-9xl font-extrabold">
+            {formatTime(pomodoroState.timer)}
+          </h2>
+        </div>
+        <div>
+          <Button
+            className={cn(
+              "w-12 h-12 rounded-xl",
+              getColorByAction(pomodoroState.action)
+            )}
+            size="icon"
+            onClick={startTimer}
+          >
+            {pomodoroState.isRunning ? (
+              <PauseIcon size={20} />
+            ) : (
+              <Play size={20} />
+            )}
+          </Button>
+        </div>
+        <p className="absolute top-10 right-10">#{pomodoroState.iteration}</p>
       </div>
-      <div>
-        <Button
-          className={cn(
-            "w-12 h-12 rounded-xl",
-            getColorByAction(pomodoroState.action)
-          )}
-          size="icon"
-          onClick={startTimer}
-        >
-          {pomodoroState.isRunning ? (
-            <PauseIcon size={20} />
-          ) : (
-            <Play size={20} />
-          )}
-        </Button>
-      </div>
-      <p className="absolute top-10 right-10">#{pomodoroState.iteration}</p>
 
       <Tasks />
     </div>

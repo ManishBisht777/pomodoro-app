@@ -4,13 +4,14 @@ import AddTask from "./AddTask";
 import { Checkbox } from "../ui/checkbox";
 import { Separator } from "../ui/separator";
 import { motion } from "framer-motion";
+import { ScrollArea } from "../ui/scroll-area";
 
 interface TasksProps {}
 export default function Tasks({}: TasksProps) {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col gap-4 w-full h-[40%] mt-10">
       <div>
         <div className="flex justify-between items-center">
           <p>Tasks</p>
@@ -18,46 +19,48 @@ export default function Tasks({}: TasksProps) {
         </div>
         <Separator className="mt-4" />
       </div>
-      <motion.div
-        layout="position"
-        transition={{
-          layout: {
-            duration: 0.5,
-            type: "spring",
-          },
-        }}
-      >
-        {tasks
-          .filter((task) => !task.completed)
-          .map((task) => (
-            <>
-              <div key={task.id} className="flex gap-1">
-                <Checkbox
-                  className="rounded-full m-[.3rem]"
-                  checked={task.completed}
-                  onClick={() => {
-                    setTasks(
-                      tasks.map((t) => {
-                        if (t.id === task.id) {
-                          return {
-                            ...t,
-                            completed: !t.completed,
-                          };
-                        }
-                        return t;
-                      })
-                    );
-                  }}
-                />
-                <div>
-                  <span className="text-sm">{task.name}</span>
-                  <p className="text-xs text-gray-700">{task.description}</p>
+      <ScrollArea className="h-[60%]">
+        <motion.div
+          layout="position"
+          transition={{
+            layout: {
+              duration: 0.5,
+              type: "spring",
+            },
+          }}
+        >
+          {tasks
+            .filter((task) => !task.completed)
+            .map((task) => (
+              <>
+                <div key={task.id} className="flex gap-1">
+                  <Checkbox
+                    className="rounded-full m-[.3rem]"
+                    checked={task.completed}
+                    onClick={() => {
+                      setTasks(
+                        tasks.map((t) => {
+                          if (t.id === task.id) {
+                            return {
+                              ...t,
+                              completed: !t.completed,
+                            };
+                          }
+                          return t;
+                        })
+                      );
+                    }}
+                  />
+                  <div>
+                    <span className="text-sm">{task.name}</span>
+                    <p className="text-xs text-gray-700">{task.description}</p>
+                  </div>
                 </div>
-              </div>
-              <Separator className="my-3" />
-            </>
-          ))}
-      </motion.div>
+                <Separator className="my-3" />
+              </>
+            ))}
+        </motion.div>
+      </ScrollArea>
 
       {/* <div className="flex flex-col justify-center text-center items-center">
         <Image
