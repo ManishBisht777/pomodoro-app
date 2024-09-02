@@ -25,7 +25,7 @@ export default function AddTask({ setTasks, tasks }: AddTaskProps) {
     setTasks([
       ...tasks,
       {
-        id: Math.random().toString(),
+        id: tasks.length + 1 + "",
         name: inputValue,
         description: descriptionValue,
         completed: false,
@@ -47,7 +47,7 @@ export default function AddTask({ setTasks, tasks }: AddTaskProps) {
             Add task
           </button>
         </DialogTrigger>
-        <DialogContent className="p-5">
+        <DialogContent className="p-5" aria-describedby="Dialog content">
           <DialogHeader>
             <DialogTitle>New task</DialogTitle>
           </DialogHeader>
