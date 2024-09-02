@@ -3,6 +3,7 @@ import { useState } from "react";
 import AddTask from "./AddTask";
 import { Checkbox } from "../ui/checkbox";
 import { Separator } from "../ui/separator";
+import { motion } from "framer-motion";
 
 interface TasksProps {}
 export default function Tasks({}: TasksProps) {
@@ -17,7 +18,15 @@ export default function Tasks({}: TasksProps) {
         </div>
         <Separator className="mt-4" />
       </div>
-      <div>
+      <motion.div
+        layout="position"
+        transition={{
+          layout: {
+            duration: 0.5,
+            type: "spring",
+          },
+        }}
+      >
         {tasks
           .filter((task) => !task.completed)
           .map((task) => (
@@ -48,7 +57,7 @@ export default function Tasks({}: TasksProps) {
               <Separator className="my-3" />
             </>
           ))}
-      </div>
+      </motion.div>
 
       {/* <div className="flex flex-col justify-center text-center items-center">
         <Image
