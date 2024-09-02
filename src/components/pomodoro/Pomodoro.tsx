@@ -78,11 +78,11 @@ export default function Pomodoro({}: PomodoroProps) {
   }, [pomodoroState.action]);
 
   return (
-    <div className="flex flex-col gap-6 items-center justify-center relative h-screen w-[35rem]">
-      <div className="h-[40%] w-full flex justify-end flex-col items-center">
-        <div className="flex items-center flex-col">
+    <div className="flex flex-col gap-6 items-center justify-center relative h-screen md:w-[35rem] w-[20rem]">
+      <div className="h-[40%] w-full flex justify-end flex-col items-center gap-5">
+        <div className="flex items-center flex-col gap-3">
           <p>{getTextByAction(pomodoroState.action)}</p>
-          <h2 className="text-9xl font-extrabold">
+          <h2 className="md:text-9xl text-7xl  font-extrabold">
             {formatTime(pomodoroState.timer)}
           </h2>
         </div>

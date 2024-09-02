@@ -12,7 +12,7 @@ export default function Tasks({}: TasksProps) {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   return (
-    <div className="flex flex-col gap-4 w-full h-[40%] mt-10">
+    <div className="flex flex-col gap-4 w-full h-[40%] mt-10`">
       <div>
         <div className="flex justify-between items-center">
           <p>Tasks</p>
