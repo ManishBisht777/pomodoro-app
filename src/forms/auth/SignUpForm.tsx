@@ -60,7 +60,7 @@ export default function SignUpForm() {
             onGenerateCode(getValues("email"), getValues("password"))
           }
         >
-          {/* {creating && <Icons.spinner className="animate-spin h-5 w-5 mr-2" />} */}
+          {creating && <Icons.spinner className="animate-spin h-5 w-5 mr-2" />}
           Generate Code
         </Button>
       )}

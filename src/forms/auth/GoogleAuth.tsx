@@ -22,7 +22,7 @@ export const GoogleAuth = ({ method }: GoogleAuthButtonProps) => {
       className="w-full flex gap-3 bg-themeBlack border-themeGray"
       variant="outline"
     >
-      <Icons.google className="w-4 h-4" />
+      <Icons.google className="w-5 h-5" />
       Google
     </Button>
   );
