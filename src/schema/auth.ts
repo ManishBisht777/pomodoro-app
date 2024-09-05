@@ -13,3 +13,19 @@ export const SignInSchema = z.object({
       "password should contain only alphabets and numbers"
     ),
 });
+
+export const SignUpSchema = z.object({
+  email: z.string().email("You must give a valid email"),
+  firstname: z.string().min(2, { message: "Your first name is too short" }),
+  lastname: z.string().min(2, { message: "Your last name is too short" }),
+  password: z
+    .string()
+    .min(8, { message: "Your password must be atleast 8 characters long" })
+    .max(64, {
+      message: "Your password can not be longer then 64 characters long",
+    })
+    .refine(
+      (value) => /^[a-zA-Z0-9_.-]*$/.test(value ?? ""),
+      "password should contain only alphabets and numbers"
+    ),
+});

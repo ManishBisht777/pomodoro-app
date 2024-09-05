@@ -1,20 +1,49 @@
-import { Separator } from "@/components/ui/separator";
+"use client";
+
+import { Icons } from "@/components/common/Icons";
+import { buttonVariants } from "@/components/ui/button";
+import SignUpForm from "@/forms/auth/SignUpForm";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type Props = {};
 
 const SignUpPage = (props: Props) => {
   return (
     <>
-      <h5 className="font-bold text-base text-themeTextWhite">Signup</h5>
-      <p className="text-themeTextGray leading-tight">
-        Network with people from around the world, join groups, create your own,
-        watch courses and become the best version of yourself.
-      </p>
-      <div className="my-10 w-full relative">
-        <div className="bg-black p-3 absolute text-themeTextGray text-xs top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          OR CONTINUE WITH
+      <div className="container flex h-full w-full flex-col items-center justify-center">
+        <Link
+          href="/"
+          className={cn(
+            buttonVariants({ variant: "ghost" }),
+            "absolute left-4 top-4 md:left-8 md:top-8"
+          )}
+        >
+          <>
+            <Icons.chevronLeft className="mr-2 h-4 w-4" />
+            Back
+          </>
+        </Link>
+        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+          <div className="flex flex-col space-y-2 text-center">
+            <Icons.logo className="mx-auto h-6 w-6" />
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Welcome back
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              Enter your email to sign in to your account
+            </p>
+          </div>
+          <SignUpForm />
+          <p className="px-8 text-center text-sm text-muted-foreground">
+            <Link
+              href="/sign-in"
+              className="hover:text-brand underline underline-offset-4"
+            >
+              ALready have an account? Sign in
+            </Link>
+          </p>
         </div>
-        <Separator orientation="horizontal" className="bg-themeGray" />
       </div>
     </>
   );

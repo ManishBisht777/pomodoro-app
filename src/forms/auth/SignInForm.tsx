@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SIGN_IN_FORM } from "@/constants/authForm";
 import { useAuthSignIn } from "@/hooks/auth";
 import { FormGenerator } from "../FormGenerator";
+import { Icons } from "@/components/common/Icons";
 
 type Props = {};
 
@@ -22,7 +23,8 @@ const SignInForm = (props: Props) => {
         />
       ))}
       <Button type="submit">
-        <Loader loading={isPending}>Sign In with Email</Loader>
+        {isPending && <Icons.spinner className="animate-spin h-5 w-5 mr-2" />}
+        Sign In with Email
       </Button>
     </form>
   );

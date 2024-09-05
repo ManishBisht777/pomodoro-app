@@ -1,5 +1,7 @@
 import { Icons } from "@/components/common/Icons";
 import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { GoogleAuth } from "@/forms/auth/GoogleAuth";
 import SignInForm from "@/forms/auth/SignInForm";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -31,9 +33,20 @@ const SignInPage = () => {
             </p>
           </div>
           <SignInForm />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <GoogleAuth method="signin" />
           <p className="px-8 text-center text-sm text-muted-foreground">
             <Link
-              href="/register"
+              href="/sign-up"
               className="hover:text-brand underline underline-offset-4"
             >
               Don&apos;t have an account? Sign Up
