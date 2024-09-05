@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ReactQueryProvider } from "@/providers/ReactQueryClient";
 
 const sfPro = localFont({
   src: "../fonts/SF-Pro.ttf",
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={cn(sfPro.className, "antialiased")}>{children}</body>
+        <body className={cn(sfPro.className, "antialiased")}>
+          {<ReactQueryProvider>{children}</ReactQueryProvider>}
+        </body>
       </html>
     </ClerkProvider>
   );

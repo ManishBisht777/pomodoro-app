@@ -1,10 +1,19 @@
 // import { onAuthenticatedUser } from "@/actions/auth"
 
+import { getAuthenticatedUser } from "@/actions/auth";
+import { redirect } from "next/navigation";
+
 type Props = {
   children: React.ReactNode;
 };
 
 const AuthLayout = async ({ children }: Props) => {
+  // const user = await getAuthenticatedUser();
+
+  // if (user.status === 401) {
+  //   redirect("/sign-in");
+  // }
+
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -73,7 +82,7 @@ const AuthLayout = async ({ children }: Props) => {
               </p>
             </div>
 
-            <div className="mt-8 grid grid-cols-6 gap-6">{children}</div>
+            <div className="mt-8">{children}</div>
           </div>
         </main>
       </div>
