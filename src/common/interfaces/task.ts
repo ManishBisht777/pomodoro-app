@@ -1,6 +1,9 @@
+import { TaskStatus } from "@prisma/client";
+
 export type Task = {
-  id: string;
-  name: string;
+  title: string;
   description: string;
-  completed: boolean;
+  status: TaskStatus;
+  pomodoros?: number;
+  completedAt?: Date;
 };

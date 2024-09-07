@@ -1,3 +1,4 @@
+import { saveTask } from "@/actions/task";
 import { Task } from "@/common/interfaces/task";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,8 +10,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
+import { TaskStatus } from "@prisma/client";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface AddTaskProps {
   tasks: Task[];
@@ -21,16 +24,34 @@ export default function AddTask({ setTasks, tasks }: AddTaskProps) {
   const [inputValue, setInputValue] = useState<string>("");
   const [descriptionValue, setDescriptionValue] = useState<string>("");
 
-  const addTask = () => {
-    setTasks([
-      ...tasks,
-      {
-        id: tasks.length + 1 + "",
-        name: inputValue,
-        description: descriptionValue,
-        completed: false,
-      },
-    ]);
+  const addTask = async () => {
+    const response = await saveTask({
+      title: inputValue,
+      description: descriptionValue,
+      status: TaskStatus.TODO,
+    });
+
+    // add a error handler fn here
+
+    if (response.status === 200 && response.task) {
+      setTasks([...tasks, response.task]);
+      toast("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      });
+    }
+
+    // setTasks([
+    //   ...tasks,
+    //   {
+    //     name: inputValue,
+    //     description: descriptionValue,
+    //     completed: false,
+    //   },
+    // ]);
     setInputValue("");
     setDescriptionValue("");
   };
